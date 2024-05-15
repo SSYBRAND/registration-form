@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brainstorm Registration Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2><font color=red><b>Coaching Centre Registration Form</b></font></h2>
+
+  <form id="registrationForm">
+    <label for="name">Name of candidate:</label><br>
+    <input type="text" id="name" name="name" required><br>
+    <span id="nameError" class="error"></span><br>
+    
+    <label for="mobile">Candidate Mobile Number:</label><br>
+    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required><br>
+    <span id="mobileError" class="error"></span><br>
+    
+    <label for="email">Parent Phone number:</label><br>
+    <input type="text" id="Mobile" name="name" required><br>
+    <span id="emailError" class="error"></span><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+  <br></br>
+ <font color=red>Note 📝</font><Marquee>
+   <strong >After Submission of form Our team will contact you as soon as possible.</strong><font color=GREEN>#bRclasses</FONT>
+  </Marquee>
+  <br></br>
+      <br></br>
+   
+<center><font color=Brown>Design & Hosting by :- &nbsp;</font><a href="https://ssybrand.github.io/SSYmall.live/">Sattu technologies </a>❣️</center>
+</script>
+</div>
+
+<script>
+  document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (validateForm()) {
+      sendData();
+    }
+  });
+
+  function validateForm() {
+    var name = document.getElementById("name").value.trim();
+    var mobile = document.getElementById("mobile").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var isValid = true;
+
+    // Name validation
+    if (name === "") {
+      document.getElementById("nameError").textContent = "Please enter your name";
+      isValid = false;
+    } else {
+      document.getElementById("nameError").textContent = "";
+    }
+
+    // Mobile validation
+    var mobilePattern = /^[0-9]{10}$/;
+    if (!mobilePattern.test(mobile)) {
+      document.getElementById("mobileError").textContent = "Please enter a valid 10-digit mobile number";
+      isValid = false;
+    } else {
+      document.getElementById("mobileError").textContent = "";
+    }
+
+    // Email validation
+    var emailPattern = /\S+@\S+\.\S+/;
+    if (!emailPattern.test(email)) {
+      document.getElementById("emailError").textContent = "Please enter a valid email address";
+      isValid = false;
+    } else {
+      document.getElementById("emailError").textContent = "";
+    }
+
+    return isValid;
+  }
+
+  function sendData() {
+    var name = document.getElementById("name").value.trim();
+    var mobile = document.getElementById("mobile").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var data = {
+      name: name,
+      mobile: mobile,
+      email: email
+    };
+
+    // Send data to Gmail
+    var url = "mailto: ssybrand58@gmail.com" +
+              "?subject=New Registration Form Submission" +
+              "&body=Name: " + data.name + "%0A" +
+              "Mobile Number: " + data.mobile + "%0A" +
+              "Email ID: " + data.email;
+    window.location.href = url;
+
+    // You can also send data to a server using AJAX if you have a backend to handle it
+    // Example:
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("POST", "url_to_your_backend", true);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.send(JSON.stringify(data));
+  }
+</script>
+</body>
+</html>
